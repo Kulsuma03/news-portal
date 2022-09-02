@@ -6,16 +6,16 @@ const allCategory = async () =>{
 }
 
 const displayCategory = allCategory =>{
-    console.log(allCategory);
+    
     const categoryContainer = document.getElementById('category');
     
     allCategory.forEach(category => {
-        console.log('ccc',category)
+        
         const div = document.createElement('div')
         div.classList.add('list-group','d-flex')
         const {category_id, category_name} = category;
         div.innerHTML = `
-        <p>${category_name}</p>
+        <p onclick="loadData('${category_id}')">${category_name}</p>
         ` 
         categoryContainer.appendChild(div); 
     });
@@ -23,5 +23,15 @@ const displayCategory = allCategory =>{
     
 }
 
+const loadData = async (id) =>{
+    const url =`https://openapi.programming-hero.com/api/news/category/${id}`
+    const res = await fetch(url);
+    const data = await res.json();
+    displayData(data);
+}
+
+const displayData = allData =>{
+    const dataContainer = document.getElementById()
+}
 
 allCategory()
