@@ -34,6 +34,8 @@ const displayData = allData => {
     console.log(allData)
     const dataContainer = document.getElementById('data-container');
     dataContainer.textContent = '';
+
+    const sort = allData.sort(function (a, b) { return b.total_view - a.total_view });
     allData.forEach(data => {
         const { id, others_info, thumbnail_url, author, title, _id, total_view, details } = data
         const { name, img, published_date } = author
@@ -55,16 +57,14 @@ const displayData = allData => {
                     <img src="${img}" class="img-fluid wide" alt="...">
                   </div>
                   <div class="date-div">
-                    <p class="fs-6 mb-1 text-primary">${name === null ? 'No Data Available' : name}</p>
-                    <p class="date">${published_date}</p>
+                    <p class="fs-6 mb-1 text-primary">${name.length === 0 ? 'No Data Available' : name}</p>
+                    <p class="date">${published_date.length === 0 ? 'No Data Available' : published_date}</p>
                   </div> 
                 </div>
-                <p>${total_view}</p>
+                <p>${total_view === 0 ? 'No Data Available' : total_view}</p>
+                <button onclick="newsDetails('${_id}')" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Show Details</button>
             </div>
-            <div>
-                
-            </div>
-            
+        
         </div>
           </div>
         </div>
@@ -73,5 +73,22 @@ const displayData = allData => {
         dataContainer.appendChild(dataDiv);
     });
 }
+
+// details 
+
+const newsDetails = async (id) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    openModal(data.data)
+}
+
+// modal 
+
+const openModal = details =>{
+    console.log(details)
+}
+
+// const openModal = 
 
 allCategory()
