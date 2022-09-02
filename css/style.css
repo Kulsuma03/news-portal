@@ -1,3 +1,14 @@
 body{
     background: #e9ebee;
 }
+.author-img{
+    width: 40px;
+    border-radius: 50%;
+}
+.wide{
+    border-radius: 50%;
+}
+.date{
+    font-size: 13px;
+    
+}

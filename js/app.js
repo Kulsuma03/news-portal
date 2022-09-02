@@ -35,7 +35,8 @@ const displayData = allData => {
     const dataContainer = document.getElementById('data-container');
     dataContainer.textContent = '';
     allData.forEach(data => {
-        const {id, others_info, thumbnail_url, author,title, _id, total_view, details} = data
+        const { id, others_info, thumbnail_url, author, title, _id, total_view, details } = data
+        const { name, img, published_date } = author
         const dataDiv = document.createElement('div');
         dataDiv.classList.add('card', 'mb-3');
         dataDiv.innerHTML = `
@@ -43,11 +44,28 @@ const displayData = allData => {
         <div class="col-md-4">
           <img src="${thumbnail_url}" class="img-fluid rounded-start" alt="...">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 mt-5">
           <div class="card-body">
             <h5 class="card-title text-info">${title}</h5>
-            <p class="card-text">${details.length > 200 ? details.slice(0, 200)+'...' : details}</p>
-             
+            <p class="card-text">${details.length > 200 ? details.slice(0, 200) + '...' : details}</p>
+            <div>
+              <div class="d-flex justify-content-between mt-5">
+                <div class="d-flex">
+                  <div class="author-img">
+                    <img src="${img}" class="img-fluid wide" alt="...">
+                  </div>
+                  <div class="date-div">
+                    <p class="fs-6 mb-1 text-primary">${name === null ? 'No Data Available' : name}</p>
+                    <p class="date">${published_date}</p>
+                  </div> 
+                </div>
+                <p>${total_view}</p>
+            </div>
+            <div>
+                
+            </div>
+            
+        </div>
           </div>
         </div>
       </div>
