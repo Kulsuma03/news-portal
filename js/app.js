@@ -10,7 +10,8 @@ const displayCategory = allCategory => {
     const categoryContainer = document.getElementById('category');
 
     allCategory.forEach(category => {
-
+    
+    //    console.log(category)
         const div = document.createElement('div')
         div.classList.add('list-group', 'd-flex')
         const { category_id, category_name } = category;
@@ -18,8 +19,8 @@ const displayCategory = allCategory => {
         <p onclick="loadData('${category_id}')">${category_name}</p>
         `
         categoryContainer.appendChild(div);
+     
     });
-
 
 }
 
@@ -31,12 +32,28 @@ const loadData = async (id) => {
 }
 
 const displayData = allData => {
-    console.log(allData)
+    document.getElementById('spiner').classList.remove('d-none')
+   try {
     const dataContainer = document.getElementById('data-container');
     dataContainer.textContent = '';
+    
+    const itemCount = document.getElementById('item-count');
+    itemCount.innerText = allData.length;
+    if(allData.length === 0){
+        
+        itemCount.innerText = 'No Data Available';
+        dataContainer.innerText ='No Data Found'
+        document.getElementById('spiner').classList.add('d-none');
 
+        
+    }else{
+        document.getElementById('spiner').classList.remove('d-none');
+    }
+   
     const sort = allData.sort(function (a, b) { return b.total_view - a.total_view });
     allData.forEach(data => {
+    
+    console.log(data)
         const { id, others_info, thumbnail_url, author, title, _id, total_view, details } = data
         const { name, img, published_date } = author
         const dataDiv = document.createElement('div');
@@ -61,7 +78,7 @@ const displayData = allData => {
                     <p class="date">${published_date.length === 0 ? 'No Data Available' : published_date}</p>
                   </div> 
                 </div>
-                <p>${total_view === 0 ? 'No Data Available' : total_view}</p>
+                <p><i class="fa-regular fa-eye"></i> ${total_view === 0 ? 'No Data Available' : total_view}</p>
                 <button onclick="newsDetails('${_id}')" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Show Details</button>
             </div>
         
@@ -70,8 +87,16 @@ const displayData = allData => {
         </div>
       </div>
         `;
+       
         dataContainer.appendChild(dataDiv);
+        document.getElementById('spiner').classList.add('d-none');
+        
+        
     });
+    
+   } catch (error) {
+     console.log(error)
+   }
 }
 
 // details 
@@ -86,7 +111,21 @@ const newsDetails = async (id) =>{
 // modal 
 
 const openModal = details =>{
-    console.log(details)
+    
+   try {
+    const modalBody = document.getElementById('modal');
+    details.forEach(detail => {
+        const { id, others_info, thumbnail_url, author, title, _id, total_view, details } = detail
+        modalBody.innerHTML =`
+        <img src="${thumbnail_url}" class="img-fluid rounded-start" alt="...">
+        <h5 class="card-title text-info">${title}</h5>
+        <p class="card-text">${details}</p>
+        `
+    })
+   } catch (error) {
+      console.log(error)
+   }
+
 }
 
 // const openModal = 
