@@ -44,8 +44,8 @@ const displayData = allData => {
         
         itemCount.classList.add('text-danger');
         itemCount.innerText = 'No Data Available';
-        foundNon.innerText ='No Data Found'
-        spinner(false)
+        foundNon.innerText ='No Data Found';
+        spinner(false);
         
     }else{
         itemCount.classList.remove('text-danger')
@@ -54,7 +54,7 @@ const displayData = allData => {
         spinner(true)
     }
     // console.log(allData)
-    const sort = allData.sort(function (a, b) { return b.total_view - a.total_view });
+    const sortData = allData.sort(function (a, b) { return b.total_view - a.total_view });
     allData.forEach(data => {
     
     
