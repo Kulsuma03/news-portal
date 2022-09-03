@@ -6,7 +6,7 @@ const allCategory = async () => {
 }
 
 const displayCategory = allCategory => {
-
+  
     const categoryContainer = document.getElementById('category');
 
     allCategory.forEach(category => {
@@ -19,24 +19,29 @@ const displayCategory = allCategory => {
         <p onclick="loadData('${category_id}')">${category_name}</p>
         `
         categoryContainer.appendChild(div);
-     
+        
     });
-
+    
 }
 
 const loadData = async (id) => {
+    spinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     const res = await fetch(url);
     const data = await res.json();
+    
     displayData(data.data);
+     
 }
 
+
 const displayData = allData => {
-    spinner(true)
+  // spinner(false)
    try {
+    
     const dataContainer = document.getElementById('data-container');
     dataContainer.textContent = '';
-    
+  
     const itemCount = document.getElementById('item-count');
     const foundNon = document.getElementById('found-non');
     itemCount.innerText = allData.length;
@@ -62,6 +67,7 @@ const displayData = allData => {
         const { name, img, published_date } = author
         const dataDiv = document.createElement('div');
         dataDiv.classList.add('card', 'mb-3');
+        
         dataDiv.innerHTML = `
         <div class="row g-0">
         <div class="col-md-4">
@@ -91,9 +97,9 @@ const displayData = allData => {
         </div>
       </div>
         `;
-       
+        
         dataContainer.appendChild(dataDiv);
-        spinner(false)
+       spinner(false)
         
     });
     
@@ -103,13 +109,13 @@ const displayData = allData => {
 }
 // spinner 
 
-const spinner = isSpinner =>{
+const spinner = isSpiner =>{
   const spiner = document.getElementById('spiner');
-  if(isSpinner === true){
-    spiner.classList.remove('d-none');
-  }else{
-    spiner.classList.add('d-none');
-  }
+  if(isSpiner){
+    spiner.classList.remove('d-none')  
+}else{
+    spiner.classList.add('d-none')
+}
 }
 
 // details 
