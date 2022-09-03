@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+/* common */
 body{
     background: #e9ebee;
+    font-family: 'Arvo', serif;
 }
 .author-img{
     width: 40px;
