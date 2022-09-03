@@ -64,7 +64,7 @@ const displayData = allData => {
         spinner(true)
     }
     
-    const sortData = allData.sort(function (a, b) { return b.total_view - a.total_view });
+    allData.sort(function (a, b) { return b.total_view - a.total_view });
     allData.forEach(data => {
     
     
