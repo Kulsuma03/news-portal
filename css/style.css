@@ -2,7 +2,7 @@
 
 /* common */
 body{
-    background: #e9ebee;
+    background: #eaedf1;
     font-family: 'Arvo', serif;
 }
 
@@ -20,6 +20,6 @@ body{
 .category:hover{
    color: rgb(79, 81, 219); 
    cursor: pointer;
-}
+} 
 
 

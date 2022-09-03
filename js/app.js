@@ -42,7 +42,7 @@ const loadData = async (id) => {
 
 const displayData = allData => {
   
-   try {
+   try { 
     
     const dataContainer = document.getElementById('data-container');
     dataContainer.textContent = '';
