@@ -16,7 +16,7 @@ const displayCategory = allCategory => {
         div.classList.add('list-group', 'd-flex')
         const { category_id, category_name } = category;
         div.innerHTML = `
-        <p onclick="loadData('${category_id}')">${category_name}</p>
+        <p class="category" onclick="loadData('${category_id}')">${category_name}</p>
         `
         categoryContainer.appendChild(div);
         
@@ -36,7 +36,7 @@ const loadData = async (id) => {
 
 
 const displayData = allData => {
-  // spinner(false)
+  
    try {
     
     const dataContainer = document.getElementById('data-container');
@@ -58,7 +58,7 @@ const displayData = allData => {
         foundNon.innerText = '';
         spinner(true)
     }
-    // console.log(allData)
+    
     const sortData = allData.sort(function (a, b) { return b.total_view - a.total_view });
     allData.forEach(data => {
     

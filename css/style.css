@@ -17,5 +17,9 @@ body{
     font-size: 13px;
     
 }
+.category:hover{
+   color: rgb(79, 81, 219); 
+   cursor: pointer;
+}
 
 
