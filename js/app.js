@@ -38,17 +38,22 @@ const displayData = allData => {
     dataContainer.textContent = '';
     
     const itemCount = document.getElementById('item-count');
+    const foundNon = document.getElementById('found-non');
     itemCount.innerText = allData.length;
     if(allData.length === 0){
         
+        itemCount.classList.add('text-danger');
         itemCount.innerText = 'No Data Available';
-        dataContainer.innerText ='No Data Found'
+        foundNon.innerText ='No Data Found'
         spinner(false)
         
     }else{
+        itemCount.classList.remove('text-danger')
+        itemCount.classList.add('text-primary')
+        foundNon.innerText = '';
         spinner(true)
     }
-    console.log(allData)
+    // console.log(allData)
     const sort = allData.sort(function (a, b) { return b.total_view - a.total_view });
     allData.forEach(data => {
     
