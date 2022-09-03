@@ -81,7 +81,7 @@ const displayData = allData => {
               <div class="d-flex justify-content-between mt-5">
                 <div class="d-flex">
                   <div class="author-img">
-                    <img src="${img}" class="img-fluid wide" alt="...">
+                    <img src="${img}" class="img-fluid   wide" alt="...">
                   </div>
                   <div class="date-div">
                     <p class="fs-6 mb-1 text-primary">${name?.length === 0 || name === null? 'No Data Available' : name}</p>
