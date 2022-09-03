@@ -7,20 +7,25 @@ const allCategory = async () => {
 
 const displayCategory = allCategory => {
   
-    const categoryContainer = document.getElementById('category');
+try {
+  const categoryContainer = document.getElementById('category');
 
-    allCategory.forEach(category => {
-    
-    //    console.log(category)
-        const div = document.createElement('div')
-        div.classList.add('list-group', 'd-flex')
-        const { category_id, category_name } = category;
-        div.innerHTML = `
-        <p class="category" onclick="loadData('${category_id}')">${category_name}</p>
-        `
-        categoryContainer.appendChild(div);
-        
-    });
+  allCategory.forEach(category => {
+  
+  //    console.log(category)
+      const div = document.createElement('div')
+      div.classList.add('list-group', 'd-flex')
+      const { category_id, category_name } = category;
+      div.innerHTML = `
+      <p class="category" onclick="loadData('${category_id}')">${category_name}</p>
+      `
+      categoryContainer.appendChild(div);
+      
+  });
+  
+} catch (error) {
+    console.log(error);
+}
     
 }
 
