@@ -157,7 +157,7 @@ const openModal = details =>{
                   </div> 
                 </div>
                 <p><i class="fa-regular fa-eye"></i> ${total_view === null || total_view === 0? 'No Data Available' : total_view}</p>
-                <button onclick="newsDetails('${_id}')" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Show Details</button>
+                
             </div>
         `
     })
